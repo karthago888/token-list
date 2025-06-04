@@ -8,9 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v3.8.0
 
-      - uses: actions/setup-go@v3
+      - uses: actions/setup-go@v3.3.0
         with:
           go-version: '^1.17.3'
 
@@ -19,7 +19,7 @@ jobs:
 
       - run: cd automerge && go build -o ~/automerge github.com/solana-labs/token-list/automerge
 
-      - run: ~/automerge -v=1 -setRemoteForCI
+      - run: ~/automerge -v=3 -setRemoteForCI
         env:
           GITHUB_APP_PEM: "${{ secrets.TL_APP_PEM }}"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
